@@ -1,0 +1,8 @@
+name: programming-for-life-sciences
+channels:
+  - defaults
+dependencies:
+  - python=3.8.5
+  - pip=20.2.3
+  - pip:
+    - -e .

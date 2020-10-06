@@ -1,0 +1,21 @@
+os:
+  - linux
+dist: bionic
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+# Build once for pushes to the repo, and once for PR from forks
+if: (type == push) OR (type == pull_request AND fork == true)
+
+install:
+  - pip install -r requirements-dev.txt
+
+script:
+  - flake8
+  - mypy our_package
+  - coverage run --source our_package -m pytest
+  - coverage report -m
+  - coveralls
